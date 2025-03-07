@@ -12,18 +12,11 @@ function FeedbackItem({item, handleDelete}) {
         <div className="text-display">{item.text}</div> 
     </Card>
   )
-
-  /* return (
-      <div className="card" style={{
-        backgroundColor: reverse ? 'rgba(0,0,0,0.4)': '#fff',
-        color: reverse ? '#fff' : '#000',
-      }}>{children}</div>
-    )
-  */
 }
 
 FeedbackItem.propTypes = {
   item: PropTypes.object.isRequired,
+  handleDelete: PropTypes.func,
 }
   
 

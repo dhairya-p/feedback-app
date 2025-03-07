@@ -1,5 +1,5 @@
+import PropTypes from 'prop-types'
 import FeedbackItem from './FeedbackItem'
-import propTypes from 'prop-types'
 
 function FeedbackList({ feedback, handleDelete }) {
   if (!feedback || feedback.length === 0) {
@@ -18,7 +18,8 @@ function FeedbackList({ feedback, handleDelete }) {
 }
 
 FeedbackList.propTypes = {
-    feedback: propTypes.array.isRequired,
+    feedback: PropTypes.array.isRequired,
+    handleDelete: PropTypes.func.isRequired,
 }
 
 export default FeedbackList
