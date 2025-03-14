@@ -1,47 +1,26 @@
-import { motion, AnimatePresence } from 'framer-motion'
-import PropTypes from 'prop-types'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 import FeedbackItem from './FeedbackItem'
+import { useContext } from 'react'
+import FeedbackContext from '../context/FeedbackContext'
 
-function FeedbackList({ feedback, handleDelete }) {
+function FeedbackList() {
+  const {feedback} = useContext(FeedbackContext)
+  const [animationParent] = useAutoAnimate()
+
   if (!feedback || feedback.length === 0) {
     return <p>No Feedback Yet</p>
   }
 
   return (
-    <div className='feedback-list'>
+    <div className='feedback-list' ref = {animationParent}>
         {feedback.map((item) => (
-            <FeedbackItem key={item.id} 
-            item={item}
-            handleDelete = { handleDelete } />
+            <FeedbackItem 
+              key={item.id}
+              item={item}
+            />
         ))}
     </div>
   )
-  /*
-    <div className='feedback-list'>
-      <AnimatePresence initial={false}>
-        {feedback.map((item) => (
-          <motion.div
-            key={item.id}
-            animate={{ opacity: 1, scale: 1}}
-            exit={{ opacity: 0, scale: 0}}
-            transition={{ duration: 0.4 }}
-            layout
-          >
-            <FeedbackItem 
-              item={item}
-              handleDelete={handleDelete} 
-            />
-          </motion.div>
-        ))}
-      </AnimatePresence>
-    </div>
-  */
-  
-}
-
-FeedbackList.propTypes = {
-    feedback: PropTypes.array.isRequired,
-    handleDelete: PropTypes.func.isRequired,
 }
 
 export default FeedbackList

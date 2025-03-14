@@ -1,5 +1,10 @@
-import PropTypes from "prop-types"
-function FeedbackStats({ feedback }) {
+import { useContext } from "react"
+import FeedbackContext from "../context/FeedbackContext"
+
+function FeedbackStats() {
+  const { feedback } = useContext(FeedbackContext)
+
+  // Calculate rating avg
   let average = feedback.reduce((acc, curr) => {
     return acc + curr.rating
   }, 0) / feedback.length
@@ -13,10 +18,5 @@ function FeedbackStats({ feedback }) {
     </div>
   )
 }
-
-FeedbackStats.propTypes = {
-    feedback: PropTypes.array,
-}
-
 
 export default FeedbackStats

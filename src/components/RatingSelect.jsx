@@ -2,7 +2,7 @@ import { useState } from "react"
 import PropTypes from 'prop-types'
 
 function RatingSelect({ select }) {
-  const [selected, setSelected] = useState(10)
+  const [selected, setSelected] = useState()
 
   const handleChange = (e) => {
     setSelected(+e.currentTarget.value)
