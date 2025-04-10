@@ -4,14 +4,14 @@ import { useContext } from 'react'
 import FeedbackContext from '../context/FeedbackContext'
 
 function FeedbackList() {
-  const {feedback} = useContext(FeedbackContext)
+  const {feedback, isLoading} = useContext(FeedbackContext)
   const [animationParent] = useAutoAnimate()
 
-  if (!feedback || feedback.length === 0) {
+  if (!isLoading && (!feedback || feedback.length === 0)) {
     return <p>No Feedback Yet</p>
   }
 
-  return (
+  return isLoading ? <h3>Loading...</h3>:(
     <div className='feedback-list' ref = {animationParent}>
         {feedback.map((item) => (
             <FeedbackItem 
